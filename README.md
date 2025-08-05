@@ -11,19 +11,19 @@ Contém cenários de negócio escritos em Gherkin (BDD) para validar regras de t
 
 Cenários abordados:
 
-Transferência válida;
+- Transferência válida;
 
-Valor maior que o saldo;
+- Valor maior que o saldo;
 
-Valor zerado ou negativo;
+- Valor zerado ou negativo;
 
-Cliente destino inexistente;
+- Cliente destino inexistente;
 
-Data inválida ou passada;
+- Data inválida ou passada;
 
-Campos obrigatórios não preenchidos;
+- Campos obrigatórios não preenchidos;
 
-Cancelamento da operação.
+- Cancelamento da operação.
 
 Premissas:
 
@@ -38,15 +38,15 @@ Contém consultas SQL para manipulação e análise de dados acadêmicos:
 
 Consultas incluídas:
 
-Listar alunos matriculados em Cálculo com o professor João;
+- Listar alunos matriculados em Cálculo com o professor João;
 
-Contar alunos por disciplina;
+- Contar alunos por disciplina;
 
-Listar disciplinas lecionadas por todos os professores;
+- Listar disciplinas lecionadas por todos os professores;
 
-Contar total de professores;
+- Contar total de professores;
 
-Listar alunos que cursaram disciplinas entre 2000 e 2020.
+- Listar alunos que cursaram disciplinas entre 2000 e 2020.
 
 
 
@@ -54,15 +54,15 @@ Listar alunos que cursaram disciplinas entre 2000 e 2020.
 
 Contém um conjunto de testes automatizados desenvolvidos com Cypress para validar operações na API do Trello:
 
-Criação de board;
+- Criação de board;
 
-Criação de lista;
+- Criação de lista;
 
-Criação de card;
+- Criação de card;
 
-Exclusão de card;
+- Exclusão de card;
 
-Exclusão de board.
+- Exclusão de board.
 
 
 
