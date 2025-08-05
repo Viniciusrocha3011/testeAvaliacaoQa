@@ -13,6 +13,7 @@ Cliente destino inexistente
 Data inválida ou passada
 Campos obrigatórios não preenchidos
 Cancelamento da operação
+
 Premissas:
 
 Saldo inicial de R$ 200,00
