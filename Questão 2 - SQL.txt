@@ -1,0 +1,34 @@
+A) Escreva a consulta SQL para listar o nome de todos os alunos matriculados na disciplina de Cálculo do professor João.
+
+SELECT A.nome
+FROM ALUNO A
+INNER JOIN CURSA C ON A.coda = C.coda
+INNER JOIN DISCIPLINA D ON C.codd = D.codd
+INNER JOIN professor P ON D.codp  Pcodp
+WHERE D.nome = "Cálculo" AND
+WHERE P.nome = "João";
+ 
+B) Escreva a consulta SQL para exibir a quantidade de alunos por disciplinas.
+
+SELECT D.nome AS disciplina, COUNT(C.coda) AS total_alunos
+FROM DISCIPLINA D
+INNER JOIN CURSA C ON D.codd = C.codd
+GROUP BY D.nome;
+ 
+C) Escreva a consulta SQL para listar as disciplinas que todos os professores lecionam.
+
+SELECT D.nome FROM disciplina D 
+group by D.nome
+HAVING COUNT (distinct D.codp) = (SELECT COUNT(*) FROM professor);
+ 
+D) Escreva a consulta SQL que exibe o total de professores.
+
+SELECT COUNT(*) AS total_professores
+FROM PROFESSOR;
+ 
+E) Escreva a consulta SQL para listar todos os alunos que cursaram alguma disciplina do ano 2000 até 2020
+
+SELECT DISTINCT A.nome
+FROM ALUNO A
+INNER JOIN CURSA C ON A.coda = C.coda
+WHERE C.ano BETWEEN 2000 AND 2020;
