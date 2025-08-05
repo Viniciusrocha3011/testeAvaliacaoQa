@@ -1,0 +1,106 @@
+Premissas adotadas:
+
+O cliente logado tem saldo de R$ 200,00.
+
+O cliente só pode transferir até o valor total disponível.
+
+Campos obrigatórios: Cliente destino, Valor, Data de efetivação.
+
+Formato de data esperado: DD/MM/AAAA.
+
+O valor deve ser numérico e positivo (> 0).
+
+A data deve ser atual ou futura (não pode ser passada).
+
+Cliente destino deve existir no banco.
+
+A transferência só é efetuada se todos os campos forem válidos.
+
+
+
+---
+
+Cenários em BDD (Gherkin)
+
+1. Transferência válida
+
+Cenário: Transferência entre correntistas com dados válidos
+Dado que o saldo disponível é de R$ 200,00
+E que o cliente destino existe no sistema
+Quando o usuário preenche "Cliente destino" com "João Silva"
+E preenche "Valor" com "100"
+E preenche "Data de efetivação" com "04/08/2025"
+E clica em "Transferir"
+Então a transferência deve ser realizada com sucesso
+E o saldo restante deve ser R$ 100,00
+
+
+---
+
+2. Valor maior que o saldo disponível
+
+Cenário: Tentativa de transferência com valor superior ao saldo
+Dado que o saldo disponível é de R$ 200,00
+Quando o usuário preenche "Valor" com "250"
+E preenche os demais campos corretamente
+E clica em "Transferir"
+Então o sistema deve exibir a mensagem "Saldo insuficiente"
+E a transferência não deve ser realizada
+
+
+---
+
+3. Valor zerado ou negativo
+
+Cenário: Tentativa de transferência com valor zero
+Dado que o saldo disponível é de R$ 200,00
+Quando o usuário preenche "Valor" com "0"
+E preenche os demais campos corretamente
+E clica em "Transferir"
+Então o sistema deve exibir a mensagem "Valor da transferência deve ser maior que zero"
+
+
+---
+
+4. Cliente destino inexistente
+
+Cenário: Tentativa de transferência para cliente inexistente
+Dado que o saldo disponível é de R$ 200,00
+Quando o usuário preenche "Cliente destino" com "Fulano XPTO"
+E esse cliente não está cadastrado no sistema
+E preenche os demais campos corretamente
+E clica em "Transferir"
+Então o sistema deve exibir a mensagem "Cliente destino não encontrado"
+
+
+---
+
+5. Data inválida ou passada
+
+Cenário: Tentativa de transferência com data no passado
+Dado que o saldo disponível é de R$ 200,00
+Quando o usuário preenche "Data de efetivação" com "01/01/2020"
+E preenche os demais campos corretamente
+E clica em "Transferir"
+Então o sistema deve exibir a mensagem "Data de efetivação inválida"
+
+
+---
+
+6. Campos obrigatórios não preenchidos
+
+Cenário: Tentativa de transferência com campos em branco
+Quando o usuário deixa todos os campos em branco
+E clica em "Transferir"
+Então o sistema deve exibir a mensagem "Todos os campos são obrigatórios"
+
+
+---
+
+7. Cancelamento da operação
+
+Cenário: Cancelamento da transferência
+Dado que o usuário começou a preencher os dados da transferência
+Quando ele clica em "Cancelar"
+Então todos os campos devem ser limpos
+E o usuário deve ser redirecionado para a tela anterior
